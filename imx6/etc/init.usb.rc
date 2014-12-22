@@ -4,6 +4,9 @@ on boot
     write /sys/class/android_usb/android0/iManufacturer $ro.product.manufacturer
     write /sys/class/android_usb/android0/iProduct $ro.product.model
 
+service usb_ifup /system/bin/sh -c "ifconfig rndis0 192.168.0.2 netmask 255.255.255.0"
+	disabled
+	oneshot
 
 # USB rndis configuration
 on property:sys.usb.config=rndis
@@ -13,6 +16,19 @@ on property:sys.usb.config=rndis
     write /sys/class/android_usb/android0/functions ${sys.usb.config}
     write /sys/class/android_usb/android0/bDeviceClass 224
     write /sys/class/android_usb/android0/enable 1
+    start usb_ifup
+    setprop sys.usb.state ${sys.usb.config}
+
+# USB rndis,adb configuration
+on property:sys.usb.config=rndis,adb
+    write /sys/class/android_usb/android0/enable 0
+    write /sys/class/android_usb/android0/idVendor 18d1
+    write /sys/class/android_usb/android0/idProduct 4e23
+    write /sys/class/android_usb/android0/functions ${sys.usb.config}
+    write /sys/class/android_usb/android0/bDeviceClass 224
+    write /sys/class/android_usb/android0/enable 1
+    start adbd
+    start usb_ifup
     setprop sys.usb.state ${sys.usb.config}
 
 on property:sys.usb.config=mtp
