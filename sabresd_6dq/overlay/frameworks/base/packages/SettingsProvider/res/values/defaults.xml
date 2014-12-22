@@ -19,4 +19,5 @@
 <resources>
     <!-- Default for Settings.Secure.USER_SETUP_COMPLETE -->
     <bool name="def_user_setup_complete">true</bool>
+    <bool name="def_lockscreen_disabled">true</bool>
 </resources>
