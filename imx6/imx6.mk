@@ -48,7 +48,8 @@ PRODUCT_PACKAGES += \
 	libion                                  \
 	display_mode_fb0.conf                   \
 	display_mode_fb2.conf                   \
-	display_mode_fb4.conf
+	display_mode_fb4.conf					\
+	# SimpleLauncher
 
 # Debug utils
 PRODUCT_PACKAGES += \
@@ -331,7 +332,8 @@ PRODUCT_COPY_FILES +=	\
 	device/fsl/imx6/etc/ota.conf:system/etc/ota.conf \
 	device/fsl/common/display/display_mode_fb0.conf:system/etc/display_mode_fb0.conf \
 	device/fsl/common/display/display_mode_fb2.conf:system/etc/display_mode_fb2.conf \
-	device/fsl/common/display/display_mode_fb4.conf:system/etc/display_mode_fb4.conf
+	device/fsl/common/display/display_mode_fb4.conf:system/etc/display_mode_fb4.conf \
+	# device/generic/common/bootanimation/bootanimation.zip:system/media/bootanimation.zip
 
 # we have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
