@@ -65,17 +65,19 @@ total_size=`sfdisk -s ${node}`
 total_size=`expr ${total_size} / 1024`
 boot_rom_sizeb=`expr ${BOOT_ROM_SIZE} + ${BOOTLOAD_RESERVE}`
 extend_size=`expr ${SYSTEM_ROM_SIZE} + ${CACHE_SIZE} + ${VENDER_SIZE} + ${MISC_SIZE} + ${seprate}`
-data_size=`expr ${total_size} - ${boot_rom_sizeb} - ${RECOVERY_ROM_SIZE} - ${extend_size} + ${seprate}`
+data_size=`expr ${total_size} - ${boot_rom_sizeb} - ${RECOVERY_ROM_SIZE} - ${extend_size} - ${seprate}`
 
 # create partitions
 if [ "${cal_only}" -eq "1" ]; then
 cat << EOF
+total  : ${total_size}MB
 BOOT   : ${boot_rom_sizeb}MB
 RECOVERY: ${RECOVERY_ROM_SIZE}MB
 SYSTEM : ${SYSTEM_ROM_SIZE}MB
 CACHE  : ${CACHE_SIZE}MB
-DATA   : ${data_size}MB
+VENDOR : ${VENDER_SIZE}MB
 MISC   : ${MISC_SIZE}MB
+DATA   : ${data_size}MB
 EOF
 exit
 fi
