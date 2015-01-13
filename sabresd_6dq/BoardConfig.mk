@@ -106,7 +106,7 @@ NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 #define consumer IR HAL support
 IMX6_CONSUMER_IR_HAL := true
 
-TARGET_BOOTLOADER_CONFIG := 6q:mx6q_sabresd_android_config 6dl:mx6dl_sabresd_android_config 6dluib:mx6dl_uib_android_config
+TARGET_BOOTLOADER_CONFIG := 6q:mx6q_sabresd_android_config 6dl:mx6dl_sabresd_android_config
 
 
 BOARD_SEPOLICY_DIRS := \
