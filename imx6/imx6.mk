@@ -49,7 +49,7 @@ PRODUCT_PACKAGES += \
 	display_mode_fb0.conf                   \
 	display_mode_fb2.conf                   \
 	display_mode_fb4.conf					\
-	# SimpleLauncher
+	SimpleLauncher
 
 # Debug utils
 PRODUCT_PACKAGES += \
@@ -323,7 +323,7 @@ PRODUCT_COPY_FILES +=	\
 	device/fsl/common/input/Dell_Dell_USB_Keyboard.idc:system/usr/idc/Dell_Dell_USB_Keyboard.idc \
 	device/fsl/common/input/eGalax_Touch_Screen.idc:system/usr/idc/eGalax_Touch_Screen.idc \
 	device/fsl/common/input/eGalax_Touch_Screen.idc:system/usr/idc/HannStar_P1003_Touchscreen.idc \
-	device/fsl/common/input/eGalax_Touch_Screen.idc:system/usr/idc/Novatek_NT11003_Touch_Screen.idc \
+	device/fsl/common/input/eGalax_Touch_Screen.idc:system/usr/idc/SSD2543_Touch_Screen.idc \
 	device/fsl/imx6/etc/init.rc:root/init.rc \
 	device/fsl/imx6/etc/apns-conf.xml:system/etc/apns-conf.xml \
 	device/fsl/imx6/etc/init.usb.rc:root/init.freescale.usb.rc \
@@ -334,7 +334,7 @@ PRODUCT_COPY_FILES +=	\
 	device/fsl/common/display/display_mode_fb2.conf:system/etc/display_mode_fb2.conf \
 	device/fsl/common/display/display_mode_fb4.conf:system/etc/display_mode_fb4.conf \
 	device/fsl/uib_6dq/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \
-	# device/generic/common/bootanimation/bootanimation.zip:system/media/bootanimation.zip
+	device/generic/common/bootanimation/bootanimation.zip:system/media/bootanimation.zip
 
 # we have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
