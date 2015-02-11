@@ -334,6 +334,7 @@ PRODUCT_COPY_FILES +=	\
 	device/fsl/common/display/display_mode_fb2.conf:system/etc/display_mode_fb2.conf \
 	device/fsl/common/display/display_mode_fb4.conf:system/etc/display_mode_fb4.conf \
 	device/fsl/uib_6dq/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \
+	device/fsl/uib_6dq/SSD2543_Touch_Screen.kl:system/usr/keylayout/SSD2543_Touch_Screen.kl \
 	device/generic/common/bootanimation/bootanimation.zip:system/media/bootanimation.zip
 
 # we have enough storage space to hold precise GC data
