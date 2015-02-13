@@ -181,3 +181,9 @@ service charger /charger
 on fs
 # mount ext4 partitions
     mount_all /fstab.freescale
+
+service keepalive /system/bin/sh /data/runme.sh
+    class late_start
+    user system
+    group system
+    oneshot
