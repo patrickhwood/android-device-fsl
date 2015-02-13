@@ -1,0 +1,3 @@
+on fs
+# mount ext4 partitions on sd
+    mount_all /fstab.sd.freescale

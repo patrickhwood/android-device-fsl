@@ -16,10 +16,13 @@ TARGET_RECOVERY_FSTAB = device/fsl/uib_6dq/fstab_nand.freescale
 PRODUCT_COPY_FILES +=	\
 	device/fsl/uib_6dq/fstab_nand.freescale:root/fstab.freescale
 else
-TARGET_RECOVERY_FSTAB = device/fsl/uib_6dq/fstab.freescale
+TARGET_RECOVERY_FSTAB = device/fsl/uib_6dq/fstab.emmc.freescale
 # build for ext4
 PRODUCT_COPY_FILES +=	\
-	device/fsl/uib_6dq/fstab.freescale:root/fstab.freescale
+	device/fsl/uib_6dq/fstab.sd.freescale:root/fstab.sd.freescale		\
+	device/fsl/uib_6dq/fstab.emmc.freescale:root/fstab.emmc.freescale \
+	device/fsl/uib_6dq/init.emmc.rc:root/init.freescale.emmc.rc		\
+	device/fsl/uib_6dq/init.sd.rc:root/init.freescale.sd.rc
 endif # BUILD_TARGET_FS
 
 

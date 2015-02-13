@@ -1,0 +1,3 @@
+on fs
+# mount ext4 partitions on emmc
+    mount_all /fstab.emmc.freescale

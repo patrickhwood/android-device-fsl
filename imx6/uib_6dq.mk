@@ -8,8 +8,12 @@ ifneq ($(wildcard device/fsl/uib_6dq/fstab_nand.freescale),)
 $(shell touch device/fsl/uib_6dq/fstab_nand.freescale)
 endif
 
-ifneq ($(wildcard device/fsl/uib_6dq/fstab.freescale),)
-$(shell touch device/fsl/uib_6dq/fstab.freescale)
+ifneq ($(wildcard device/fsl/uib_6dq/fstab.sd.freescale),)
+$(shell touch device/fsl/uib_6dq/fstab.sd.freescale)
+endif
+
+ifneq ($(wildcard device/fsl/uib_6dq/fstab.emmc.freescale),)
+$(shell touch device/fsl/uib_6dq/fstab.emmc.freescale)
 endif
 
 # Overrides

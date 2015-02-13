@@ -1,4 +1,6 @@
 import init.${ro.hardware}.usb.rc
+# ro.boot.rootdevice is set to "sd" or "mmc" by uboot
+import init.${ro.hardware}.${ro.boot.rootdevice}.rc
 
 on init
     start watchdogd
@@ -177,7 +179,3 @@ service ing /system/bin/ingsvcd -c /system/etc/gps/Orion.ini
 
 service charger /charger
     class charger
-
-on fs
-# mount ext4 partitions
-    mount_all /fstab.freescale
