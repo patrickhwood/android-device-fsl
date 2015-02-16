@@ -1,0 +1,78 @@
+These instructions have been tested on Ubuntu 12.04LTS and Ubuntu 14.04LTS.
+Android builds require a 64-bit install.  You should read through all the
+material at https://source.android.com/source/building.html (and everything
+at https://source.android.com/source/building.html if you can). I've found
+their disk space requirements to be a little excessive: currently, the
+Freescale build for the UIB board and a separate build for the generic
+emulator, plus all the sources and ccache space uses 85GB.
+
+
+1. Install all the tools as described for your system at
+   https://source.android.com/source/building.html
+
+2. Install all the AOSP sources as described at
+   https://source.android.com/source/building.html and in the Freescale document
+   Android_User's_Guide.pdf Chapter 3.  Note that we are currently using
+   uib_6dq-eng as the product target, so running lunch should be deferred
+   until after step #3.
+
+3. Install the UIB sources.  I currently maintain three github repositories
+   for the linux kernel, uboot, and Android modifications for the UIB.  Assuming
+   $ANDROID is the location of your Android source tree:
+
+# in kernel_imx
+cd $ANDROID/kernel_imx
+cat <<EOF >> .git/config
+[remote "pwood"]
+    url = https://github.com/patrickhwood/linux.git
+    fetch = +refs/heads/*:refs/remotes/pwood/*
+[branch "kk4.4.2_1.0.0-ga-uib"]
+    remote = pwood
+    merge = refs/heads/kk4.4.2_1.0.0-ga-uib
+EOF
+git pull pwood
+git checkout kk4.4.2_1.0.0-ga-uib
+
+# in bootable/bootloader/uboot-imx
+cd $ANDROID/bootable/bootloader/uboot-imx
+cat <<EOF >> .git/config
+[remote "pwood"]
+    url = https://github.com/patrickhwood/uboot-imx.git
+    fetch = +refs/heads/*:refs/remotes/pwood/*
+[branch "kk4.4.2_1.0.0-ga-uib"]
+    remote = pwood
+    merge = refs/heads/kk4.4.2_1.0.0-ga-uib
+EOF
+git pull pwood
+git checkout kk4.4.2_1.0.0-ga-uib
+
+# in device/fsl
+cd $ANDROID/device/fsl
+cat <<EOF >> .git/config
+[remote "pwood"]
+	url = https://github.com/patrickhwood/android-device-fsl.git
+	fetch = +refs/heads/*:refs/remotes/pwood/*
+[branch "imx_kk4.4.2_1.0.0-ga-uib"]
+	remote = pwood
+	merge = refs/heads/imx_kk4.4.2_1.0.0-ga-uib
+EOF
+git pull pwood
+git checkout imx_kk4.4.2_1.0.0-ga-uib
+
+4. Run the "lunch" command to select the uib_6dq-eng target.
+
+ lunch uib_6dq-eng
+
+5. Build (note: set -jN where N == the number of cores on your CPU):
+
+ make -j4
+
+6. Customizations should go into device/fsl/imx6/imx6.mk.  New app packages
+   should be added to PRODUCT_PACKAGES and new files (e.g., the boot animation)
+   added to PRODUCT_COPY_FILES.  Any time a package is added, renamed, or
+   removed, a "make installclean" should be performed to remove the disk image
+   files and packages from previous builds before creating a new build.
+
+7. Build images are placed in the out/target/product/uib_6dq directory.
+   The UIB uboot binary for the DualLite is u-boot-6dl.bin.  Other files such
+   as the .img images are the same.
