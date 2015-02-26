@@ -1,10 +1,10 @@
 These instructions have been tested on Ubuntu 12.04LTS and Ubuntu 14.04LTS.
 Android builds require a 64-bit install.  You should read through all the
 material at https://source.android.com/source/building.html (and everything
-at https://source.android.com/source/building.html if you can). I've found
+at https://source.android.com/source/ if you can). I've found
 their disk space requirements to be a little excessive: currently, the
 Freescale build for the UIB board and a separate build for the generic
-emulator, plus all the sources and ccache space uses 85GB.
+emulator, plus all the sources and ccache space uses 100GB.
 
 
 1. Install all the tools as described for your system at
@@ -59,20 +59,28 @@ EOF
 git pull pwood
 git checkout imx_kk4.4.2_1.0.0-ga-uib
 
-4. Run the "lunch" command to select the uib_6dq-eng target.
+4. Run the "envsetup.sh" script in build to set up the Android build environment
+   variables:
+
+ . build/envsetup.sh
+
+   (Note the syntax: a period followed by a space and the script.)
+
+5. Run the "lunch" command to select the uib_6dq-eng target.
 
  lunch uib_6dq-eng
 
-5. Build (note: set -jN where N == the number of cores on your CPU):
+6. Build (note: set -jN where N == the number of cores on your CPU):
 
  make -j4
 
-6. Customizations should go into device/fsl/imx6/imx6.mk.  New app packages
+7. Customizations should go into device/fsl/imx6/imx6.mk,
+   device/fsl/imx6/uib_6dq.mk, or the files in device/fsl/uib_6dq/.  New apps
    should be added to PRODUCT_PACKAGES and new files (e.g., the boot animation)
    added to PRODUCT_COPY_FILES.  Any time a package is added, renamed, or
    removed, a "make installclean" should be performed to remove the disk image
    files and packages from previous builds before creating a new build.
 
-7. Build images are placed in the out/target/product/uib_6dq directory.
+8. Build images are placed in the out/target/product/uib_6dq directory.
    The UIB uboot binary for the DualLite is u-boot-6dl.bin.  Other files such
-   as the .img images are the same.
+   as the .img images are the same as in canonical Android builds.
