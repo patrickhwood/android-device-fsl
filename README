@@ -74,7 +74,7 @@ git checkout imx_kk4.4.2_1.0.0-ga-uib
 
  make -j4
 
-7. Customizations should go into device/fsl/imx6/imx6.mk,
+7. Android system customizations should go into device/fsl/imx6/imx6.mk,
    device/fsl/imx6/uib_6dq.mk, or the files in device/fsl/uib_6dq/.  New apps
    should be added to PRODUCT_PACKAGES and new files (e.g., the boot animation)
    added to PRODUCT_COPY_FILES.  Any time a package is added, renamed, or
