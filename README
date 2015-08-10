@@ -82,5 +82,6 @@ git checkout imx_kk4.4.2_1.0.0-ga-uib
    files and packages from previous builds before creating a new build.
 
 8. Build images are placed in the out/target/product/uib_6dq directory.
-   The UIB uboot binary for the DualLite is u-boot-6dl.bin.  Other files such
-   as the .img images are the same as in canonical Android builds.
+   The UIB uboot binary for the DualLite is u-boot-6dl.bin, and the uboot binary
+   for the Solo is u-boot-6solo.bin.  Other files such as the .img images are the
+   same as in canonical Android builds.
