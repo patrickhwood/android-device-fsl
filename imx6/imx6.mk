@@ -53,8 +53,6 @@ PRODUCT_PACKAGES += \
 
 # Debug utils
 PRODUCT_PACKAGES += \
-	busybox					\
-	bash					\
 	taskset					\
 	sqlite3					\
 	libefence				\
